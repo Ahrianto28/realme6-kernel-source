@@ -38,7 +38,6 @@
 #define MTK_SOLUTION 1
 
 #ifdef VENDOR_EDIT
-//Cong.Dai@psw.bsp.tp 2018/08/30 modified for stop system enter sleep before low irq handled
 #include <soc/oppo/oppo_project.h>
 __attribute__((weak)) int check_touchirq_triggered(void) {return 0;}
 #endif /* VENDOR_EDIT */
@@ -449,7 +448,6 @@ static int suspend_enter(suspend_state_t state, bool *wakeup)
 	BUG_ON(!irqs_disabled());
 
 #ifdef VENDOR_EDIT
-//Cong.Dai@psw.bsp.tp 2018/08/30 modified for stop system enter sleep before low irq handled
 		if (check_touchirq_triggered()) {
 		error = -EBUSY;
 		goto Enable_irqs;
@@ -474,7 +472,6 @@ static int suspend_enter(suspend_state_t state, bool *wakeup)
 	}
 
 #ifdef VENDOR_EDIT
-//Cong.Dai@psw.bsp.tp 2018/08/30 modified for stop system enter sleep before low irq handled
  Enable_irqs:
 #endif /* VENDOR_EDIT */
 
@@ -564,7 +561,6 @@ static void suspend_finish(void)
 	pm_restore_console();
 }
 #ifdef VENDOR_EDIT
-//rendong.shi@BSP.boot,2016/1/18,port form 8939 for screenon too slowly when press pwrkey
 /**
  * Sync the filesystem in seperate workqueue.
  * Then check it finishing or not periodically and

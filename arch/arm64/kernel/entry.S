@@ -962,7 +962,6 @@ el0_svc_naked:					// compat entry point
 	b.hs	ni_sys
 	mask_nospec64 xscno, xsc_nr, x19	// enforce bounds for syscall number
 #ifdef VENDOR_EDIT
-//Ke.Li@ROM.Security, 2019-9-30, Add for prevent root check
 #ifdef CONFIG_OPPO_ROOT_CHECK
 	adr x16, oppo_root_check
 #else
@@ -999,7 +998,6 @@ __sys_trace:
 	ldp	x4, x5, [sp, #S_X4]
 	ldp	x6, x7, [sp, #S_X6]
 #ifdef VENDOR_EDIT
-//Ke.Li@ROM.Security, 2019-9-30, Add for prevent root check
 #ifdef CONFIG_OPPO_ROOT_CHECK
 	adr x16, oppo_root_check
 #else
